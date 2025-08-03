@@ -112,6 +112,8 @@ require('lazy').setup({
 
   {
     "stevearc/oil.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       set_default_file_explorer = true,
     },
@@ -181,6 +183,18 @@ require('lazy').setup({
   {
     "benomahony/oil-git.nvim",
     dependencies = { "stevearc/oil.nvim" },
+  },
+
+  {
+    "goolord/alpha-nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local startify = require("alpha.themes.startify")
+      startify.file_icons.provider = "devicons"
+      require("alpha").setup(
+        startify.config
+      )
+    end,
   },
 
   {
