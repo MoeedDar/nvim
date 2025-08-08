@@ -47,6 +47,7 @@ require('lazy').setup({
         "ocamllsp",
         "pyright",
         "rust_analyzer",
+        "svelte-language-server",
         "vtsls",
         "tailwindcss",
         "zls",
@@ -84,6 +85,7 @@ require('lazy').setup({
         python = { "black" },
         rust = { "rustfmt" },
         typescript = { "prettierd" },
+        svelte = { "prettierd" },
         zig = { "zigfmt" },
       },
       format_on_save = {
@@ -116,6 +118,9 @@ require('lazy').setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       set_default_file_explorer = true,
+      view_options = {
+        show_hidden = true,
+      },
     },
   },
 
@@ -167,12 +172,6 @@ require('lazy').setup({
   },
 
   {
-    "NMAC427/guess-indent.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
-
-  {
     "folke/todo-comments.nvim",
     event = "VimEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -183,26 +182,23 @@ require('lazy').setup({
   {
     "benomahony/oil-git.nvim",
     dependencies = { "stevearc/oil.nvim" },
+    opts = {},
   },
 
   {
     "goolord/alpha-nvim",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      local startify = require("alpha.themes.startify")
-      startify.file_icons.provider = "devicons"
-      require("alpha").setup(
-        startify.config
-      )
+      require("alpha").setup(require("alpha.themes.theta").config)
     end,
   },
 
   {
-    "slugbyte/lackluster.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme("lackluster-dark")
+      vim.cmd.colorscheme("tokyonight-storm")
     end
   },
 })
