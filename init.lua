@@ -47,7 +47,7 @@ require('lazy').setup({
         "ocamllsp",
         "pyright",
         "rust_analyzer",
-        "svelte-language-server",
+        "svelte",
         "vtsls",
         "tailwindcss",
         "zls",
@@ -65,27 +65,18 @@ require('lazy').setup({
   {
     "stevearc/conform.nvim",
     lazy = false,
-    keys = {
-      {
-        "<leader>f",
-        function()
-          require("conform").format { async = true, lsp_fallback = true }
-        end,
-        mode = "",
-        desc = "[F]ormat buffer",
-      },
-    },
     opts = {
       formatters_by_ft = {
         c = { "clang_format" },
+        cpp = { "clang_format" },
+        glsl = { "clang_format" },
         go = { "gofmt", "goimports" },
         javascript = { "prettierd" },
-        cpp = { "clang_format" },
         odin = { "odinfmt" },
         python = { "black" },
         rust = { "rustfmt" },
-        typescript = { "prettierd" },
         svelte = { "prettierd" },
+        typescript = { "prettierd" },
         zig = { "zigfmt" },
       },
       format_on_save = {
@@ -198,7 +189,7 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme("tokyonight-storm")
+      vim.cmd.colorscheme("tokyonight-night")
     end
   },
 })
